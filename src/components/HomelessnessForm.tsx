@@ -94,17 +94,17 @@ export default function HomelessnessAssessmentForm() {
   };
 
   return (
-    <div className="container mx-auto p-8 max-w-3xl space-y-8 bg-gray-100">
+    <div className="container mx-auto p-8 max-w-3xl bg-gray-100">
       <Card className="shadow-none border-2 border-gray-200 bg-gray-100">
         <CardHeader className="rounded-t-lg">
           <CardTitle className="text-3xl font-bold text-center text-gray-800">CREMIS Assessment Form</CardTitle>
         </CardHeader>
         <CardContent className="p-6">
-          <form onSubmit={handleSubmit} className="space-y-8">
+          <form onSubmit={handleSubmit}>
             {questions.map((question) => (
               <div key={question.id} className="bg-gray-100 p-6 rounded-lg">
                 <Label className="text-xl font-semibold mb-4 text-gray-700 block">{question.text}</Label>
-                <RadioGroup onValueChange={(value) => handleChange(question.id, value)} className="space-y-2">
+                <RadioGroup onValueChange={(value) => handleChange(question.id, value)}>
                   {question.options.map((option) => (
                     <div key={option.value} className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-md transition-colors">
                       <RadioGroupItem value={option.value} id={`${question.id}-${option.value}`} className="w-5 h-5" />
