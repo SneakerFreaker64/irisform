@@ -94,19 +94,19 @@ export default function HomelessnessAssessmentForm() {
   };
 
   return (
-    <div className="container mx-auto p-8 max-w-3xl space-y-8">
-      <Card className="shadow-lg border-2 border-gray-200 bg-gradient-to-br from-white to-gray-50">
-        <CardHeader className="bg-gray-100 rounded-t-lg">
+    <div className="container mx-auto p-8 max-w-3xl space-y-8 bg-gray-100">
+      <Card className="shadow-none border-2 border-gray-200 bg-gray-100">
+        <CardHeader className="rounded-t-lg">
           <CardTitle className="text-3xl font-bold text-center text-gray-800">CREMIS Assessment Form</CardTitle>
         </CardHeader>
         <CardContent className="p-6">
           <form onSubmit={handleSubmit} className="space-y-8">
             {questions.map((question) => (
-              <div key={question.id} className="bg-white p-6 rounded-lg shadow-md">
+              <div key={question.id} className="bg-gray-100 p-6 rounded-lg">
                 <Label className="text-xl font-semibold mb-4 text-gray-700 block">{question.text}</Label>
                 <RadioGroup onValueChange={(value) => handleChange(question.id, value)} className="space-y-2">
                   {question.options.map((option) => (
-                    <div key={option.value} className="flex items-center space-x-3 p-2 hover:bg-gray-100 rounded-md transition-colors">
+                    <div key={option.value} className="flex items-center space-x-3 p-2 hover:bg-gray-200 rounded-md transition-colors">
                       <RadioGroupItem value={option.value} id={`${question.id}-${option.value}`} className="w-5 h-5" />
                       <Label htmlFor={`${question.id}-${option.value}`} className="text-lg text-gray-600 cursor-pointer flex items-center">
                         {option.label === 'Sleep on the street' && <Home className="mr-2 h-5 w-5" />}
@@ -120,7 +120,7 @@ export default function HomelessnessAssessmentForm() {
                 </RadioGroup>
               </div>
             ))}
-            <Button type="submit" className="w-full text-lg py-6 bg-zinc-900 -600 hover:bg-blue-700 transition-colors">
+            <Button type="submit" className="w-full text-lg py-6 bg-zinc-900 hover:bg-blue-700 transition-colors">
               Submit Assessment
             </Button>
           </form>
@@ -133,7 +133,7 @@ export default function HomelessnessAssessmentForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <Card className={`shadow-lg ${getResultColor(result)} border-2`}>
+          <Card className={`shadow-none ${getResultColor(result)} border-2`}>
             <CardHeader>
               <CardTitle className="text-2xl font-bold flex items-center">
                 <AlertCircle className="mr-3 h-6 w-6" />
